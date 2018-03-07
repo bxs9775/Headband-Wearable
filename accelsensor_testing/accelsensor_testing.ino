@@ -2,6 +2,8 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_LSM303_U.h>
 
+/*Code based of accelsensor demo - https://github.com/adafruit/Adafruit_LSM303DLHC/blob/master/examples/accelsensor/accelsensor.pde
+
 /* Assign a unique ID to this sensor at the same time */
 Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(54321);
 
