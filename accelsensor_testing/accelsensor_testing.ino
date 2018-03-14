@@ -52,19 +52,19 @@ void loop(void)
   accel.getEvent(&event);
 
   /* Display the results (acceleration is measured in m/s^2) */
-  //Serial.print("X: "); Serial.print(event.acceleration.x); Serial.print("  ");
-  //Serial.print("Y: "); Serial.print(event.acceleration.y); Serial.print("  ");
+  Serial.print("X: "); Serial.print(event.acceleration.x); Serial.print("  ");
+  Serial.print("Y: "); Serial.print(event.acceleration.y); Serial.print("  ");
   //Serial.print("Z: "); Serial.print(event.acceleration.z); Serial.print("  ");Serial.println("m/s^2 ");
 
   /* Display the results (acceleration is measured in m/s^2) */
-  //Serial.print("X: "); Serial.print(prevEvent.acceleration.x); Serial.print("  ");
-  //Serial.print("Y: "); Serial.print(prevEvent.acceleration.y); Serial.print("  ");
+  Serial.print("X: "); Serial.print(prevEvent.acceleration.x); Serial.print("  ");
+  Serial.print("Y: "); Serial.print(prevEvent.acceleration.y); Serial.print("  ");
   //Serial.print("Z: "); Serial.print(prevEvent.acceleration.z); Serial.print("  ");Serial.println("m/s^2 ");
 
   /*Check changing...*/
-  bool xChange = abs(event.acceleration.x-prevEvent.acceleration.x) > 1.5;
-  bool yChange = abs(event.acceleration.y-prevEvent.acceleration.y) > 1.5;
-  bool zChange = abs(event.acceleration.z-prevEvent.acceleration.z) > 1.5;
+  bool xChange = abs(event.acceleration.x-prevEvent.acceleration.x) > 1.0;
+  bool yChange = abs(event.acceleration.y-prevEvent.acceleration.y) > 1.0;
+ // bool zChange = abs(event.acceleration.z-prevEvent.acceleration.z) > 1.0;
   Serial.print("X: ");
   if( xChange ){
     Serial.print("Yes  ");
@@ -77,14 +77,16 @@ void loop(void)
   } else {
     Serial.print("No   ");
   }
+  /*
   Serial.print("Z: ");
   if( zChange ){
     Serial.print("Yes  ");
   } else {
     Serial.print("No   ");
   }
+  */
   Serial.print(">=2 axises: ");
-  if( (xChange && yChange) || (xChange && zChange) || (yChange && zChange)){
+  if(xChange && yChange){
     Serial.print("Yes  ");
   } else {
     
