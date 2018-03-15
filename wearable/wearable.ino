@@ -1,4 +1,5 @@
 #include <Wire.h>
+#include <Servo.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_LSM303_U.h>
 
@@ -9,7 +10,7 @@ Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(54321);
 
 sensors_event_t prevEvent;
 
-int motorPin = 2;
+Servo motor;
 
 void displaySensorDetails(void)
 {
@@ -43,8 +44,7 @@ void setup(void)
     while(1);
   }
 
-  pinMode(motorPin,OUTPUT);
-
+  motor.attach(9);
   /* Display some basic information on this sensor */
   displaySensorDetails();
 }
@@ -92,10 +92,10 @@ void loop(void)
   Serial.print(">=2 axises: ");
   if(xChange && yChange){
     Serial.print("Yes  ");
-    digitalWrite(motorPin,HIGH);
+    motor.write(45);
   } else {
     Serial.print("No  ");
-    digitalWrite(motorPin,LOW);
+    motor.write(0);
   }
   Serial.println("");
 
